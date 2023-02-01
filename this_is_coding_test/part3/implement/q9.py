@@ -19,7 +19,6 @@ def solution(s):
                     result += str(check)
                 check = s[j:j+i]
                 count = 1
-        # 원래 result += s[j:len(S)] 로 했었 는데 틀렸다
         result += str(count) + check if count >= 2 else check
         print(result, len(result))
         if len(result) < answer:
