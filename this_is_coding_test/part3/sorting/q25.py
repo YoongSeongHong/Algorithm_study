@@ -4,10 +4,9 @@ import sys
 
 def solution(N, stages):
     stages.sort() # 먼저 정렬해서 그 단계 포함한 배열 끝까지의 원소(해당 단계를 클리어한 사람의 수)수를 저장하게 할 것임.
-    answer = stages
     arr = [0] * (N+2) # arr 각 인덱스에는 같은 단계 이상의 사람 수를 저장
     for i in range(1, N+2):
-        count = 0
+        count = 0  # i단계인 사람 수 저장
         for j in stages: # 정렬 된 스테이지 돌면서 i단계인 사람 수 저장
             if j == i:
                 count += 1
@@ -15,7 +14,7 @@ def solution(N, stages):
                 break
         arr[i] = count  # 그러면 i번째에는 i단계인 사람의 수를 저장한다.
     for i in range(len(arr)):
-        sum = 0
+        sum = 0  # 실패율의 분모
         for j in range(i, len(arr)):
             sum += arr[j] # i단계 이상인 사람 수 저장
         if sum == 0:  # 클리어 못한 단계 있으면 0 저장
@@ -32,4 +31,4 @@ def solution(N, stages):
 
 N = int(sys.stdin.readline())
 stages = list(map(int, sys.stdin.readline().split()))
-solution(N, stages)
+print(solution(N, stages))
